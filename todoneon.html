@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <style>
+   body {
+    font-family: 'Courier New', monospace;
+    background: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo {
+    background: #111;
+    width: 60%;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #0ff;
+    color: #0ff;
+}
+
+h1 {
+    text-align: center;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #0ff;
+    border-radius: 8px;
+    background: black;
+    color: #0ff;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    background: #0ff;
+    border: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0ff;
+}
+
+button:hover {
+    background: #00e6e6;
+    box-shadow: 0 0 15px #00e6e6;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #0ff;
+    box-shadow: 0 0 10px #0ff inset;
+}
+
+.delete {
+    background: #ff00ff;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="todo">
+        <h1>ToDo</h1>
+        <div class="input-group">
+            <input type="text" id="values" placeholder="Type a task...">
+            <button onclick="add()">Add</button>
+        </div>
+        <p id="task-list"></p>
+    </div>
+    <audio id="delete-sound" src="imdlr7s9w0h-ting-sfx-3.mp3"></audio>
+
+    <script>
+        function add() {
+            const text = document.getElementById("values").value;
+
+            const task = document.createElement("div");
+            task.className = "task";
+
+            const taskText = document.createElement("span");
+            taskText.textContent = text;
+
+
+
+
+
+            const dlt = document.createElement("button");
+            dlt.textContent = "Delete";
+            dlt.className = "delete";
+            dlt.addEventListener("click", () => {
+                document.getElementById("delete-sound").play();
+                task.remove();
+            });
+
+            task.appendChild(taskText);
+            task.appendChild(dlt);
+
+            document.getElementById("task-list").appendChild(task);
+
+            document.getElementById("values").value = "";
+        }
+    </script>
+</body>
+
+</html>

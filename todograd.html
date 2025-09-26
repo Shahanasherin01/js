@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <style>
+      body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.todo {
+    background: white;
+    width: 380px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    text-align: center;
+    color: #764ba2;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #764ba2;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    background: #764ba2;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #5b3c85;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    margin-top: 10px;
+    padding: 10px;
+    border-left: 5px solid #764ba2;
+    border-radius: 8px;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="todo">
+        <h1>ToDo</h1>
+        <div class="input-group">
+            <input type="text" id="values" placeholder="Type a task...">
+            <button onclick="add()">Add</button>
+        </div>
+        <p id="task-list"></p>
+    </div>
+    <audio id="delete-sound" src="imdlr7s9w0h-ting-sfx-3.mp3"></audio>
+
+    <script>
+        function add() {
+            const text = document.getElementById("values").value;
+
+            const task = document.createElement("div");
+            task.className = "task";
+
+            const taskText = document.createElement("span");
+            taskText.textContent = text;
+
+
+
+
+
+            const dlt = document.createElement("button");
+            dlt.textContent = "Delete";
+            dlt.className = "delete";
+            dlt.addEventListener("click", () => {
+                document.getElementById("delete-sound").play();
+                task.remove();
+            });
+
+            task.appendChild(taskText);
+            task.appendChild(dlt);
+
+            document.getElementById("task-list").appendChild(task);
+
+            document.getElementById("values").value = "";
+        }
+    </script>
+</body>
+
+</html>

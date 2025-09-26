@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pastel Calculator</title>
+<style>
+/* ==== Overall page background ==== */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: #e9e3ff;             /* light lavender background */
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* ==== Calculator frame ==== */
+.calculator {
+  background: #d5c7ff;             /* soft purple frame */
+  padding: 25px;
+  border-radius: 30px;
+  box-shadow: 0 0 20px rgba(155, 130, 255, 0.4);
+  width: 280px;
+  border: 4px solid #c6b4f6;
+}
+
+/* ==== Display ==== */
+.display {
+  width: 100%;
+  height: 60px;
+  font-size: 24px;
+  text-align: right;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  background: #f8f6ff;
+  color: #3c2e70;
+  box-shadow: inset 0 0 8px rgba(150, 120, 230, 0.3);
+  font-weight: bold;
+}
+
+/* ==== Buttons grid ==== */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* ==== Button base ==== */
+button {
+  height: 55px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* ==== Pastel color scheme for buttons ==== */
+button:nth-child(1)  { background:#ffe0e0; } /* 7 */
+button:nth-child(2)  { background:#ffd1e8; } /* 8 */
+button:nth-child(3)  { background:#ffddaf; } /* 9 */
+button:nth-child(4)  { background:#ffdede; } /* ÷ */
+
+button:nth-child(5)  { background:#fff0b3; } /* 4 */
+button:nth-child(6)  { background:#d1ffd1; } /* 5 */
+button:nth-child(7)  { background:#b3f0ff; } /* 6 */
+button:nth-child(8)  { background:#ffd4aa; } /* × */
+
+button:nth-child(9)  { background:#e6ccff; } /* 1 */
+button:nth-child(10) { background:#ffcce0; } /* 2 */
+button:nth-child(11) { background:#ffecb3; } /* 3 */
+button:nth-child(12) { background:#e0d4ff; } /* − */
+
+button:nth-child(13) { background:#cceeff; } /* 0 */
+button:nth-child(14) { background:#c8f7dc; } /* . */
+button:nth-child(15) { background:#ffb3b3; } /* C */
+button:nth-child(16) { background:#ffd1dc; } /* + */
+
+/* Equal button spans entire row */
+.equal-btn {
+  grid-column: span 4;
+  border-radius: 20px;
+  background: #bfa4ff;
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Hover/active effects */
+button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+button:active {
+  transform: scale(0.95);
+}
+</style>
+</head>
+
+<body>
+  <div class="calculator">
+    <input type="text" id="display" class="display" readonly>
+    <div class="buttons">
+      <button onclick="add('7')">7</button>
+      <button onclick="add('8')">8</button>
+      <button onclick="add('9')">9</button>
+      <button onclick="add('/')">÷</button>
+
+      <button onclick="add('4')">4</button>
+      <button onclick="add('5')">5</button>
+      <button onclick="add('6')">6</button>
+      <button onclick="add('*')">×</button>
+
+      <button onclick="add('1')">1</button>
+      <button onclick="add('2')">2</button>
+      <button onclick="add('3')">3</button>
+      <button onclick="add('-')">−</button>
+
+      <button onclick="add('0')">0</button>
+      <button onclick="add('.')">.</button>
+      <button onclick="cleard()">C</button>
+      <button onclick="add('+')">+</button>
+
+      <button onclick="calculate()" class="equal-btn">=</button>
+    </div>
+  </div>
+
+<script>
+let expr = "";
+function add(val) {
+  expr += val;
+  document.getElementById("display").value = expr;
+}
+function calculate() {
+  try {
+    expr = eval(expr).toString();
+    document.getElementById("display").value = expr;
+  } catch {
+    document.getElementById("display").value = "invalid input";
+    expr = "";
+  }
+}
+function cleard() {
+  expr = "";
+  document.getElementById("display").value = "";
+}
+</script>
+</body>
+</html>

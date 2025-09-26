@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo {
+    background: rgba(255, 255, 255, 0.1);
+    width: 70%;
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffebcd;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+}
+
+button {
+    background: #ff9800;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e68900;  
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.delete {
+    background: #ff3e3e;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="todo">
+        <h1>ToDo</h1>
+        <div class="input-group">
+            <input type="text" id="values" placeholder="Type a task...">
+            <button onclick="add()">Add</button>
+        </div>
+        <p id="task-list"></p>
+    </div>
+    <audio id="delete-sound" src="imdlr7s9w0h-ting-sfx-3.mp3"></audio>
+
+    <script>
+        function add() {
+            const text = document.getElementById("values").value;
+
+            const task = document.createElement("div");
+            task.className = "task";
+
+            const taskText = document.createElement("span");
+            taskText.textContent = text;
+
+
+
+
+
+            const dlt = document.createElement("button");
+            dlt.textContent = "Delete";
+            dlt.className = "delete";
+            dlt.addEventListener("click", () => {
+                document.getElementById("delete-sound").play();  
+                task.remove();
+            });
+
+            const pend = document.createElement("button");
+            pend.textContent = "Pending";
+            pend.className = "pnd";
+            pend.addEventListener("click", () => {
+                if(pend.textContent=="Pending"){
+                    pend.textContent="Completed"
+                    pend.style.backgroundColor="green"
+                }
+                else{
+                    pend.textContent="Pending"
+                    pend.style.backgroundColor="orange"
+                }
+            });
+
+            
+
+            task.appendChild(taskText);
+            task.appendChild(pend);
+            task.appendChild(dlt);
+
+            document.getElementById("task-list").appendChild(task);
+
+            document.getElementById("values").value = "";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Toggle</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9966, #ff5e62);
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff3e6;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border: 3px solid #ff6f61;
+      animation: popIn 0.8s ease;
+    }
+
+    img {
+      width: 260px;
+      height: auto;
+      border-radius: 15px;
+      border: 3px solid #ff6f61;
+      box-shadow: 0 6px 18px rgba(255, 94, 98, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow: 0 10px 25px rgba(255, 94, 98, 0.6);
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 10px;
+      background: #ff6f61;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #e85c4f;
+      transform: scale(1.05);
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="don.webp" alt="Toggle Image" id="k"><br>
+    <button onclick="f1()">Click</button>
+  </div>
+
+  <script>
+    let a = true;
+
+    function f1() {
+      if (a) {
+        document.getElementById("k").src = "don1.webp";
+      } else {
+        document.getElementById("k").src = "don.webp";
+      }
+      a = !a;
+    }
+  </script>
+</body>
+
+</html>

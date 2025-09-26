@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: navy;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background: #fff;
+            padding: 25px 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 20px;
+        }
+
+        input {
+            width: 85%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #333;
+        }
+
+        p {
+            color: red;
+            font-size: 12px;
+            margin: 0;
+            text-align: left;
+            min-height: 16px;
+        }
+
+        button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: red;
+        }
+
+        p {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div class="box">
+            <h2>REGISTRATION FORM</h2>
+
+            <input type="text" id="user" placeholder="Enter  Username">
+            <p id="usr"></p>
+            <input type="password" id="pass" placeholder="Enter password">
+            <p id="pss"></p>
+
+            <input type="number" id="nom" placeholder="Enter phone number">
+            <p id="no"></p>
+            <button onclick="call()" type="button">Submit</button>
+        </div>
+    </form>
+
+
+    <script>
+
+        function call() {
+            let user = document.getElementById('user').value.trim();
+            let pass = document.getElementById('pass').value.trim();
+            let nom = document.getElementById('nom').value.trim();
+
+
+            let valid = true;
+
+            if (user.length < 5) {
+                document.getElementById('usr').innerHTML = "username must be 5 characters";
+                valid = false;
+            }
+            else {
+                document.getElementById('usr').innerHTML = "";
+            }
+
+            if (pass.length < 7) {
+                document.getElementById('pss').innerHTML = "username must be 7 characters";
+                valid = false;
+            }
+            else {
+                document.getElementById('pss').innerHTML = "";
+            }
+
+            if (nom.length !== 10 || isNaN(nom)) {
+                document.getElementById('no').innerHTML = "username must be 10 digits";
+                valid = false;
+            }
+            else {
+                document.getElementById('no').innerHTML = "";
+            }
+
+            if (valid) {
+                alert("Form submitted successfully");
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

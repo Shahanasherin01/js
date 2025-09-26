@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+    <style>
+        body{
+            background-color: cadetblue;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ToDo List</h1>
+    <div id="q">
+        <input type="text" id="print" placeholder="Create a Task">
+        <button type="submit" onclick="list()">create</button>
+        
+    </div>
+
+    <script>
+        function list() {
+
+            const text = document.getElementById("print").value;
+            const para = document.createElement("h6");
+            const dlt=document.createElement("button");
+            const bvalue=document.createTextNode("delete");
+            dlt.appendChild(bvalue);
+
+
+            const a = document.createTextNode(text);
+
+            
+            para.appendChild(a);
+            para.appendChild(dlt);
+            q.appendChild(para);    
+            dlt.addEventListener('click',()=>{
+                para.remove();
+            })
+
+           dlt.style.backgroundColor="red" 
+
+        }
+        
+    </script>
+</body>
+
+</html>

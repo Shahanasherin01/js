@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unicorn Registration</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    form {
+      background: #fffafc;
+      padding: 30px 25px;
+      border-radius: 20px;
+      border: 3px solid #ffb6f9;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0px 5px 20px rgba(255, 182, 249, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    form::before {
+      content: "✨🦄✨";
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: #ff6be7;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #ff6be7;
+      font-size: 22px;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px #ffaaff;
+    }
+
+    input {
+      width: 85%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 2px solid #ffd6f9;
+      border-radius: 25px;
+      font-size: 14px;
+      outline: none;
+      transition: 0.3s;
+      background: #fff0fa;
+    }
+
+    input:focus {
+      border-color: #ff6be7;
+      box-shadow: 0px 0px 8px #ffb6f9;
+      background: #fff;
+    }
+
+    p {
+      color: #ff4c98;
+      font-size: 12px;
+      margin: 0;
+      text-align: left;
+      min-height: 16px;
+      padding-left: 25px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #ff6be7, #ff9cee, #ffc6ff);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 15px;
+      width: 100%;
+      font-weight: bold;
+      box-shadow: 0px 4px 12px rgba(255, 105, 180, 0.4);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #ff9cee, #ffc6ff, #ffdeeb);
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <div class="box">
+      <h2>🦄 REGISTRATION FORM 🦄</h2>
+
+      <input type="text" id="user" placeholder="🌸 Enter Username">
+      <p id="usr"></p>
+
+      <input type="password" id="pass" placeholder="🌈 Enter Password">
+      <p id="pss"></p>
+
+      <input type="number" id="nom" placeholder="💖 Enter Phone Number">
+      <p id="no"></p>
+
+      <button onclick="call()" type="button">✨ Submit ✨</button>
+    </div>
+  </form>
+
+  <script>
+    function call() {
+      let user = document.getElementById('user').value.trim();
+      let pass = document.getElementById('pass').value.trim();
+      let nom = document.getElementById('nom').value.trim();
+
+      let valid = true;
+
+      if (user.length < 5) {
+        document.getElementById('usr').innerHTML = "⚠️ Username must be at least 5 characters";
+        valid = false;
+      } else {
+        document.getElementById('usr').innerHTML = "";
+      }
+
+      if (pass.length < 7) {
+        document.getElementById('pss').innerHTML = "⚠️ Password must be at least 7 characters";
+        valid = false;
+      } else {
+        document.getElementById('pss').innerHTML = "";
+      }
+
+      if (nom.length !== 10 || isNaN(nom)) {
+        document.getElementById('no').innerHTML = "⚠️ Phone number must be 10 digits";
+        valid = false;
+      } else {
+        document.getElementById('no').innerHTML = "";
+      }
+
+      if (valid) {
+        alert("🎉🦄 Form submitted successfully! 🌈✨");
+      }
+    }
+  </script>
+</body>
+
+</html>
